@@ -716,22 +716,7 @@
         }
 
 
-          .activa {
-            position: fixed;
-            bottom: 500px;
-            right: 10px;
-            width: 65px;
-            height: 65px;
-           
-            
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 1000;
-           
-            transition: all 0.3s ease;
-        }
+      
 
         .music-control:hover {
             transform: scale(1.15);
@@ -916,7 +901,7 @@
         </svg>
     </div>
     
-    <div class="activa" id="activa"> Reproducir </div>
+   
 
 
     <audio id="bgMusic" autoplay loop>
@@ -1221,7 +1206,7 @@
         const music = document.getElementById('bgMusic');
         const musicControl = document.getElementById('musicControl');
         const musicIcon = document.getElementById('musicIcon');
-        const activame = document.getElementById('activa');
+      
         let isPlaying = false;
 
         musicControl.addEventListener('click', () => {
@@ -1229,14 +1214,14 @@
                 music.pause();
                 musicIcon.innerHTML = '<path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>';
                 musicControl.title = 'Reproducir música';
-                activame.textContent = 'Reproducir';
+               
             } else {
                 music.play().catch(e => {
                     console.log('No se pudo reproducir la música automáticamente');
                 });
                 musicIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
                 musicControl.title = 'Pausar música';
-                activame.textContent = 'Pausar';
+              
             }
             isPlaying = !isPlaying;
         });
