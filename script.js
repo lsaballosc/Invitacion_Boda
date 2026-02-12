@@ -67,7 +67,7 @@
         
         // Page Navigation
         let cp = 1;
-        const tp = 5;
+        const tp = 6;
         const pb = document.getElementById('prevBtn');
         const nb = document.getElementById('nextBtn');
         const pi = document.getElementById('pageIndicator');
@@ -110,5 +110,34 @@
             }
         }, { passive: true });
         
+        // Cuenta regresiva — 4 de Julio 2026, 5:00 PM (hora Costa Rica, UTC-6)
+        const weddingDate = new Date('2026-07-04T17:00:00-06:00');
+
+        function updateCountdown() {
+            const now = new Date();
+            const diff = weddingDate - now;
+
+            if (diff <= 0) {
+                document.getElementById('cd-days').textContent    = '00';
+                document.getElementById('cd-hours').textContent   = '00';
+                document.getElementById('cd-minutes').textContent = '00';
+                document.getElementById('cd-seconds').textContent = '00';
+                return;
+            }
+
+            const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours   = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('cd-days').textContent    = String(days).padStart(2, '0');
+            document.getElementById('cd-hours').textContent   = String(hours).padStart(2, '0');
+            document.getElementById('cd-minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('cd-seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
         // Initialize
         window.addEventListener('load', () => { createParticles(); });
