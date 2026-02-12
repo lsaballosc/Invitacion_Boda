@@ -112,7 +112,7 @@
         
         // Cuenta regresiva — 4 de Julio 2026, 5:00 PM (hora Costa Rica, UTC-6)
         const weddingDate    = new Date('2026-07-04T17:00:00-06:00');
-        const weddingDayStart = new Date('2026-07-04T00:00:00-06:00');
+          const weddingDayStart = new Date('2026-07-04T00:00:00-06:00');
 
         function updateCountdown() {
             const now  = new Date();
