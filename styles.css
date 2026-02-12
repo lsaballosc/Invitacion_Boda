@@ -414,6 +414,42 @@
             margin-top: clamp(6px, 1.2vh, 16px);
         }
 
+        /* Mensaje día de la boda */
+        .wedding-day-message {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: clamp(10px, 2vh, 20px);
+            animation: pageIn 0.8s ease forwards;
+        }
+
+        .wedding-day-emoji {
+            font-size: clamp(52px, 12vw, 80px);
+            animation: heartBeat 1.2s ease-in-out infinite;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50%       { transform: scale(1.18); }
+        }
+
+        .wedding-day-title {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(52px, 12vw, 80px);
+            color: var(--primary-blue);
+            line-height: 1.1;
+        }
+
+        .wedding-day-text {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(17px, 3.2vw, 22px);
+            color: #444;
+            font-style: italic;
+            line-height: 1.8;
+            max-width: 460px;
+        }
+
         /* Page 6 — Confirmar */
         .special-message {
             font-family: 'Playfair Display', serif;

@@ -111,19 +111,31 @@
         }, { passive: true });
         
         // Cuenta regresiva — 4 de Julio 2026, 5:00 PM (hora Costa Rica, UTC-6)
-        const weddingDate = new Date('2026-07-04T17:00:00-06:00');
+        const weddingDate    = new Date('2026-07-04T17:00:00-06:00');
+        const weddingDayStart = new Date('2026-02-11T00:00:00-06:00');
 
         function updateCountdown() {
-            const now = new Date();
+            const now  = new Date();
             const diff = weddingDate - now;
+            const isWeddingDay = now >= weddingDayStart;
 
-            if (diff <= 0) {
-                document.getElementById('cd-days').textContent    = '00';
-                document.getElementById('cd-hours').textContent   = '00';
-                document.getElementById('cd-minutes').textContent = '00';
-                document.getElementById('cd-seconds').textContent = '00';
+            const grid    = document.getElementById('countdown-grid');
+            const message = document.getElementById('wedding-day-message');
+            const subtitle = document.querySelector('#page5 .section-subtitle');
+            const dateLabel = document.getElementById('countdown-date-label');
+
+            if (isWeddingDay) {
+                if (grid)     grid.style.display    = 'none';
+                if (dateLabel) dateLabel.style.display = 'none';
+                if (subtitle)  subtitle.style.display  = 'none';
+                if (message)  message.style.display  = 'flex';
                 return;
             }
+
+            if (grid)     grid.style.display    = '';
+            if (dateLabel) dateLabel.style.display = '';
+            if (subtitle)  subtitle.style.display  = '';
+            if (message)  message.style.display  = 'none';
 
             const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours   = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
